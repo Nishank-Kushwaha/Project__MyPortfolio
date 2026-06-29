@@ -59,7 +59,7 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/nishank-kushwaha-96041a303",
     label: "LinkedIn",
   },
-  { icon: Mail, href: "#contact", label: "Email" },
+  { icon: Mail, href: "mailto:kushwahanishank01@gmail.com", label: "Email" },
 ];
 
 const fadeUp: Variants = {
