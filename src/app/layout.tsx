@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import MeteorsWrapper from "@/components/meteors-wrapper";
+import ParticlesWrapper from "@/components/particles-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +39,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ParticlesWrapper />
+          <MeteorsWrapper />
           <Navbar />
           <Toaster richColors position="bottom-right" />
           <main>{children}</main>
