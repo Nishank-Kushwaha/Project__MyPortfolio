@@ -12,6 +12,8 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Coding", href: "#coding" },
   { label: "Contact", href: "#contact" },
 ];
@@ -33,11 +35,28 @@ function ThemeToggle() {
 
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
+  const [active, setActive] = React.useState("home");
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      const sections = navLinks.map((l) => l.href.replace("#", ""));
+      const offset = 100;
+
+      let current = "home";
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= window.scrollY + offset) {
+          current = id;
+        }
+      }
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -61,15 +80,26 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const id = link.href.replace("#", "");
+            const isActive = active === id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`text-sm transition-colors relative ${
+                  isActive
+                    ? "text-foreground font-medium"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground rounded-full" />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Desktop actions */}
@@ -97,16 +127,24 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-64">
               <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const id = link.href.replace("#", "");
+                  const isActive = active === id;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={`text-lg font-medium transition-colors ${
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
                 <Button asChild className="mt-4">
                   <a
                     href="/resume.pdf"
