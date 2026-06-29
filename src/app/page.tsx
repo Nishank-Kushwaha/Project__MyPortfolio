@@ -1,11 +1,11 @@
 import Hero from "@/components/sections/hero";
+import About from "@/components/sections/about";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <section id="home" className="min-h-screen" />
-      <section id="about" className="min-h-screen" />
+      <About />
       <section id="skills" className="min-h-screen" />
       <section id="projects" className="min-h-screen" />
       <section id="contact" className="min-h-screen" />
