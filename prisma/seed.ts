@@ -22,23 +22,41 @@ async function main() {
     },
   });
 
+  // Skills — clear and reseed
+  await prisma.skill.deleteMany();
+
   // Skills
   const skills = [
-    { name: "C++", category: "Languages", order: 1 },
-    { name: "Python", category: "Languages", order: 2 },
-    { name: "JavaScript", category: "Languages", order: 3 },
-    { name: "TypeScript", category: "Languages", order: 4 },
-    { name: "React", category: "Frontend", order: 1 },
-    { name: "Next.js", category: "Frontend", order: 2 },
-    { name: "Tailwind CSS", category: "Frontend", order: 3 },
+    { name: "C", category: "Languages", order: 1 },
+    { name: "C++", category: "Languages", order: 2 },
+    { name: "Python", category: "Languages", order: 3 },
+    { name: "JavaScript", category: "Languages", order: 4 },
+    { name: "TypeScript", category: "Languages", order: 5 },
+    { name: "HTML5", category: "Frontend", order: 1 },
+    { name: "CSS3", category: "Frontend", order: 2 },
+    { name: "React", category: "Frontend", order: 3 },
+    { name: "Next.js", category: "Frontend", order: 4 },
+    { name: "TailwindCSS", category: "Frontend", order: 5 },
     { name: "Node.js", category: "Backend", order: 1 },
-    { name: "Express", category: "Backend", order: 2 },
-    { name: "PostgreSQL", category: "Database", order: 1 },
-    { name: "MongoDB", category: "Database", order: 2 },
-    { name: "Prisma", category: "Database", order: 3 },
-    { name: "Docker", category: "Tools", order: 1 },
-    { name: "Git", category: "Tools", order: 2 },
-    { name: "Linux", category: "Tools", order: 3 },
+    { name: "Nodemon", category: "Backend", order: 2 },
+    { name: "Express.js", category: "Backend", order: 3 },
+    { name: "Appwrite", category: "Backend", order: 4 },
+    { name: "MongoDB", category: "Database", order: 1 },
+    { name: "Mongoose.js", category: "Database", order: 2 },
+    { name: "MySQL", category: "Database", order: 3 },
+    { name: "PostgreSQL", category: "Database", order: 4 },
+    { name: "Prisma", category: "Database", order: 5 },
+    { name: "NumPy", category: "Data Science", order: 1 },
+    { name: "Pandas", category: "Data Science", order: 2 },
+    { name: "Seaborn", category: "Data Science", order: 3 },
+    { name: "Matplotlib", category: "Data Science", order: 4 },
+    { name: "Git", category: "Tools", order: 1 },
+    { name: "GitHub", category: "Tools", order: 2 },
+    { name: "Docker", category: "Tools", order: 3 },
+    { name: "MATLAB", category: "Tools", order: 4 },
+    { name: "VS Code", category: "Tools", order: 5 },
+    { name: "Jupyter", category: "Tools", order: 6 },
+    { name: "Linux", category: "Tools", order: 7 },
   ];
 
   for (const skill of skills) {

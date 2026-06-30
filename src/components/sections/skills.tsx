@@ -2,7 +2,14 @@ import { getSkills } from "@/lib/actions";
 import { Badge } from "@/components/ui/badge";
 import SkillGlobe from "@/components/skill-globe";
 
-const categoryOrder = ["Languages", "Frontend", "Backend", "Database", "Tools"];
+const categoryOrder = [
+  "Languages",
+  "Frontend",
+  "Backend",
+  "Database",
+  "Data Science",
+  "Tools",
+];
 
 export default async function Skills() {
   const skills = await getSkills();

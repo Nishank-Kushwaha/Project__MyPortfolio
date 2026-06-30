@@ -3,43 +3,45 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const ICON_MAP: Record<string, string> = {
-  "C++": "/icons/C++.png",
-  Python: "/icons/Python.png",
-  JavaScript: "/icons/JavaScript.png",
-  TypeScript: "/icons/TypeScript.png",
-  React: "/icons/React.png",
-  "Next.js": "/icons/Next.js.png",
-  "Tailwind CSS": "/icons/TailwindCSS.png",
-  "Node.js": "/icons/Node.js.png",
-  Express: "/icons/Express.js.png",
-  PostgreSQL: "/icons/PostgreSQL.png",
-  MongoDB: "/icons/MongoDB.png",
-  Prisma: "/icons/Prisma.png",
-  Docker: "/icons/Docker.png",
-  Git: "/icons/Git.png",
-  Linux: "/icons/Linux.png",
-};
-
 const COLOR_MAP: Record<string, string> = {
+  C: "#A8B9CC",
   "C++": "#00599C",
   Python: "#3776AB",
   JavaScript: "#F7DF1E",
   TypeScript: "#3178C6",
+  HTML5: "#E34F26",
+  CSS3: "#1572B6",
   React: "#61DAFB",
   "Next.js": "#FFFFFF",
-  "Tailwind CSS": "#06B6D4",
+  TailwindCSS: "#06B6D4",
   "Node.js": "#339933",
-  Express: "#CCCCCC",
-  PostgreSQL: "#4169E1",
+  Nodemon: "#76D04B",
+  "Express.js": "#CCCCCC",
+  Appwrite: "#FD366E",
   MongoDB: "#47A248",
+  "Mongoose.js": "#880000",
+  MySQL: "#4479A1",
+  PostgreSQL: "#4169E1",
   Prisma: "#5A67D8",
-  Docker: "#2496ED",
+  NumPy: "#4DABCF",
+  Pandas: "#E70488",
+  Seaborn: "#4C72B0",
+  Matplotlib: "#11557C",
   Git: "#F05032",
+  GitHub: "#E0E0E0",
+  Docker: "#2496ED",
+  MATLAB: "#E16737",
+  "VS Code": "#007ACC",
+  Jupyter: "#F37626",
   Linux: "#FCC624",
 };
 
-type Skill = { id: number; name: string; category: string };
+type Skill = {
+  id: number;
+  name: string;
+  category: string;
+  icon: string | null;
+};
 
 export default function SkillGlobe({ skills }: { skills: Skill[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -228,7 +230,7 @@ export default function SkillGlobe({ skills }: { skills: Skill[] }) {
     async function buildCloud() {
       for (let i = 0; i < skills.length; i++) {
         const skill = skills[i];
-        const imgUrl = ICON_MAP[skill.name] ?? "";
+        const imgUrl = skill.icon ?? "";
         const color = COLOR_MAP[skill.name] ?? "#888888";
         const tex = await makeTex(skill.name, color, imgUrl);
         const mat = new THREE.SpriteMaterial({
