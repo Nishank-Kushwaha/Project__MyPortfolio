@@ -328,12 +328,13 @@ export default function SkillGlobe({ skills }: { skills: Skill[] }) {
     container.addEventListener(
       "touchmove",
       (e) => {
+        e.preventDefault();
         vy += (e.touches[0].clientX - tx) * 0.0028;
         vx += (e.touches[0].clientY - ty) * 0.0028;
         tx = e.touches[0].clientX;
         ty = e.touches[0].clientY;
       },
-      { passive: true },
+      { passive: false },
     );
     container.addEventListener("touchend", () => {
       setTimeout(() => {
