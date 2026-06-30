@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.vercel.app",
+    url: "https://project-my-portfolio-wqu9-nu.vercel.app/",
     title: "Nishank Kushwaha | Software Engineer",
     description:
       "EE undergrad at IIT BHU Varanasi. Full stack developer and competitive programmer.",
