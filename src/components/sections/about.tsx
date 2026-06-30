@@ -3,9 +3,14 @@ import { MapPin, Mail, Code2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodeforces, SiLeetcode } from "react-icons/si";
 import { Badge } from "@/components/ui/badge";
+import { existsSync } from "fs";
+import path from "path";
 
 export default async function About() {
   const about = await getAbout();
+  const hasProfileImage = existsSync(
+    path.join(process.cwd(), "public", "profile.jpg"),
+  );
 
   if (!about) return null;
 
@@ -28,10 +33,18 @@ export default async function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left — avatar placeholder */}
+          {/* Left — avatar */}
           <div className="flex justify-center">
-            <div className="w-64 h-64 rounded-2xl bg-primary/10 border border-border flex items-center justify-center">
-              <Code2 className="w-24 h-24 text-primary/40" />
+            <div className="w-64 h-64 rounded-2xl bg-primary/10 border border-border flex items-center justify-center overflow-hidden">
+              {hasProfileImage ? (
+                <img
+                  src="/profile.jpg"
+                  alt={about.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Code2 className="w-24 h-24 text-primary/40" />
+              )}
             </div>
           </div>
 
