@@ -125,8 +125,8 @@ export default function Navbar() {
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
-              <nav className="flex flex-col gap-4 mt-8">
+            <SheetContent side="right" className="w-72 flex flex-col">
+              <nav className="flex flex-col items-center justify-center gap-6 flex-1 -mt-8">
                 {navLinks.map((link) => {
                   const id = link.href.replace("#", "");
                   const isActive = active === id;
@@ -135,17 +135,20 @@ export default function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-lg font-medium transition-colors ${
+                      className={`text-xl font-medium transition-colors relative ${
                         isActive
                           ? "text-foreground"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {link.label}
+                      {isActive && (
+                        <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-6 h-px bg-foreground rounded-full" />
+                      )}
                     </a>
                   );
                 })}
-                <Button asChild className="mt-4">
+                <Button asChild size="lg" className="mt-6">
                   <a
                     href="/resume.pdf"
                     target="_blank"
