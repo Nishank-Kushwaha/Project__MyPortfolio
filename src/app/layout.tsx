@@ -19,8 +19,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nishank Kushwaha | Portfolio",
-  description: "Software Engineer & Competitive Programmer at IIT BHU Varanasi",
+  title: "Nishank Kushwaha | Software Engineer & Competitive Programmer",
+  description:
+    "Portfolio of Nishank Kushwaha — EE undergrad at IIT BHU Varanasi. Full stack developer, competitive programmer, and open source enthusiast.",
+  keywords: [
+    "Nishank Kushwaha",
+    "IIT BHU",
+    "Software Engineer",
+    "Competitive Programmer",
+    "Full Stack Developer",
+    "Next.js",
+    "React",
+    "C++",
+    "Codeforces",
+  ],
+  authors: [{ name: "Nishank Kushwaha" }],
+  creator: "Nishank Kushwaha",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yourportfolio.vercel.app",
+    title: "Nishank Kushwaha | Software Engineer",
+    description:
+      "EE undergrad at IIT BHU Varanasi. Full stack developer and competitive programmer.",
+    siteName: "Nishank Kushwaha Portfolio",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
