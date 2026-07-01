@@ -7,10 +7,14 @@ import Certificates from "@/components/sections/certificates";
 import CodingProfiles from "@/components/sections/coding-profiles";
 import Contact from "@/components/sections/contact";
 
-export default function Home() {
+import { getAbout } from "@/lib/actions";
+
+export default async function Home() {
+  const about = await getAbout();
+
   return (
     <>
-      <Hero />
+      <Hero resumeUrl={about?.resume ?? ""} />
       <About />
       <Skills />
       <Projects />

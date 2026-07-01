@@ -33,7 +33,7 @@ function ThemeToggle() {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
   const [scrolled, setScrolled] = React.useState(false);
   const [active, setActive] = React.useState("home");
   const [open, setOpen] = React.useState(false);
@@ -106,7 +106,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-2">
           <ThemeToggle />
           <Button asChild size="sm">
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
               Resume
             </a>
           </Button>
@@ -149,11 +149,7 @@ export default function Navbar() {
                   );
                 })}
                 <Button asChild size="lg" className="mt-6">
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                     Resume
                   </a>
                 </Button>

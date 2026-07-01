@@ -71,7 +71,7 @@ const fadeUp: Variants = {
   }),
 };
 
-export default function Hero() {
+export default function Hero({ resumeUrl }: { resumeUrl: string }) {
   const typedRole = useTypingEffect(roles);
 
   return (
@@ -142,7 +142,7 @@ export default function Hero() {
           variants={fadeUp}
         >
           <Button size="lg" asChild>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
               <FileText className="mr-2 h-4 w-4" />
               Resume
             </a>

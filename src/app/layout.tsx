@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/sonner";
 import MeteorsWrapper from "@/components/meteors-wrapper";
 import ParticlesWrapper from "@/components/particles-wrapper";
 
+import { getAbout } from "@/lib/actions";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -50,11 +52,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const about = await getAbout();
+  const resumeUrl = about?.resume ?? "";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -68,7 +73,7 @@ export default function RootLayout({
         >
           <ParticlesWrapper />
           <MeteorsWrapper />
-          <Navbar />
+          <Navbar resumeUrl={resumeUrl} />
           <Toaster richColors position="bottom-right" />
           <main>{children}</main>
           <Footer />
