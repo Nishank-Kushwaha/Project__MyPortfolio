@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Fredoka } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
@@ -7,6 +7,8 @@ import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import MeteorsWrapper from "@/components/meteors-wrapper";
 import ParticlesWrapper from "@/components/particles-wrapper";
+
+import AstronautMascot from "@/components/astronaut-mascot";
 
 import { getAbout } from "@/lib/actions";
 
@@ -18,6 +20,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -63,7 +71,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fredoka.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -77,6 +85,8 @@ export default async function RootLayout({
           <Toaster richColors position="bottom-right" />
           <main>{children}</main>
           <Footer />
+
+          <AstronautMascot />
         </ThemeProvider>
       </body>
     </html>
